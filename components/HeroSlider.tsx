@@ -275,7 +275,6 @@ export default function HeroSlider() {
       <div style={{
         position: 'absolute', top: 'calc(var(--nav-height) + 32px)', right: 'clamp(24px, 5vw, 60px)',
         zIndex: 10,
-        writing: 'vertical-rl',
         display: 'flex', alignItems: 'center', gap: '10px',
       }}>
         <span style={{
