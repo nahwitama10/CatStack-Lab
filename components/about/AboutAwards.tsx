@@ -1,3 +1,4 @@
+'use client'
 const awards = [
   { year: '2023', title: 'Best Residential Project', body: 'London Design Awards' },
   { year: '2022', title: 'Heritage Project of the Year', body: 'RIBA London' },
