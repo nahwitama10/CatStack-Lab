@@ -3,7 +3,13 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
-const navLinks = [
+type NavItem = {
+  label: string
+  href?: string
+  children?: NavItem[]
+}
+
+const navLinks: NavItem[] = [
   { label: 'Home', href: '/' },
   {
     label: 'Cats',
@@ -92,7 +98,7 @@ export default function Navbar() {
         }}
       >
         <Link href="/" style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 400, letterSpacing: '0.08em', color: 'var(--color-white)', textTransform: 'uppercase' }}>
-          Minale + Mann
+          CatStack Lab
         </Link>
 
         <ul style={{ display: 'flex', gap: '28px', listStyle: 'none', alignItems: 'center' }} className="desktop-nav">
@@ -101,24 +107,46 @@ export default function Navbar() {
               onMouseEnter={() => link.children && handleMouseEnter(link.label)}
               onMouseLeave={handleMouseLeave}
             >
-              {link.href && !link.children ? (
-                <Link href={link.href} style={navLinkStyle}>{link.label}</Link>
-              ) : link.href && link.children ? (
-                <Link href={link.href} style={{ ...navLinkStyle, display: 'flex', alignItems: 'center', gap: '6px' }}>
+              {link.children ? (
+                <button
+                  style={{
+                    ...navLinkStyle,
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                  }}
+                >
                   {link.label}
-                  <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style={{ transition: 'transform 0.3s', transform: activeDropdown === link.label ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-                    <path d="M1 1l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-                  </svg>
-                </Link>
-              ) : (
-                <button style={{ ...navLinkStyle, background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  {link.label}
-                  <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style={{ transition: 'transform 0.3s', transform: activeDropdown === link.label ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-                    <path d="M1 1l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+
+                  <svg
+                    width="8"
+                    height="5"
+                    viewBox="0 0 8 5"
+                    fill="none"
+                    style={{
+                      transition: 'transform 0.3s',
+                      transform:
+                        activeDropdown === link.label
+                          ? 'rotate(180deg)'
+                          : 'rotate(0deg)',
+                    }}
+                  >
+                    <path
+                      d="M1 1l3 3 3-3"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </button>
+              ) : (
+                <Link href={link.href || '/'} style={navLinkStyle}>
+                  {link.label}
+                </Link>
               )}
-
               {link.children && (
                   <div
                     onMouseEnter={() => handleMouseEnter(link.label)}
