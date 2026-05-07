@@ -3,31 +3,35 @@
 import Link from 'next/link'
 
 const footerLinks = {
-  '🐱 Cats': [
-    { label: 'All Cats', href: '/cats' },
-    { label: 'Breeds', href: '/cats/breeds' },
-    { label: 'Gallery', href: '/cats/gallery' },
-  ],
-  '🛠️ Projects': [
-    { label: 'Web Apps', href: '/projects?type=web' },
-    { label: 'Backend', href: '/projects?type=backend' },
-    { label: 'Integrations', href: '/projects?type=integration' },
-  ],
-  '😺 Me': [
+  Navigation: [
+    { label: 'Home', href: '/' },
+    { label: 'Projects', href: '/projects' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
+  ],
+
+  Engineering: [
+    { label: 'Frontend Systems', href: '/projects?type=frontend' },
+    { label: 'Backend APIs', href: '/projects?type=backend' },
+    { label: 'Workflow Platforms', href: '/projects?type=enterprise' },
+    { label: 'Integrations', href: '/projects?type=integration' },
+  ],
+
+  Connect: [
     { label: 'GitHub', href: 'https://github.com/nahwitama10' },
+    { label: 'LinkedIn', href: 'YOUR_LINKEDIN_URL' },
+    { label: 'Email', href: '/contact' },
   ],
 }
 
 export default function Footer() {
   return (
-    <footer className="bg-cat-dark text-white relative overflow-hidden" style={{ fontFamily: 'var(--font-body)' }}>
+    <footer className="bg-[#111111] text-white relative overflow-hidden" style={{ fontFamily: 'var(--font-body)' }}>
       {/* Top wave */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cat-orange via-cat-yellow to-cat-teal" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-400/60 to-transparent" />
 
       {/* Paw print bg */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.02]">
         {['top-8 left-12', 'top-16 right-24', 'bottom-12 left-1/3', 'bottom-8 right-8'].map((pos, i) => (
           <div key={i} className={`absolute ${pos} text-5xl`}>🐾</div>
         ))}
@@ -45,8 +49,24 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-stone-400 text-sm leading-relaxed mb-6">
-              Fullstack developer building enterprise systems and modern web apps. Powered by coffee & cats.
+              Fullstack developer building enterprise systems and modern web apps. Focused on scalable backend systems, modern frontend engineering, and production-ready web applications.
             </p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {[
+                'ASP.NET Core',
+                'Next.js',
+                'TypeScript',
+                'PostgreSQL',
+                'Tailwind CSS',
+              ].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1 rounded-full border border-stone-700 text-stone-300 text-xs font-semibold"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>            
             <div className="flex gap-3">
               {[
                 { icon: '⌨️', href: 'https://github.com/nahwitama10', label: 'GitHub' },
@@ -89,11 +109,13 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-stone-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-stone-500 text-sm">
-            © {new Date().getFullYear()} Ibnu Nahwitama · Made with 🧡 & 🐱 in Indonesia
+            © {new Date().getFullYear()} Ibnu Nahwitama · Fullstack Engineer based in Indonesia
           </p>
           <div className="flex items-center gap-2 px-4 py-2 bg-stone-800 rounded-full">
             <span className="w-2 h-2 bg-cat-teal rounded-full animate-purr" />
-            <span className="text-stone-400 text-xs font-medium">Built with Next.js + Tailwind · Deployed on Vercel</span>
+            <span className="text-stone-400 text-xs font-medium">
+              Next.js · ASP.NET Core · PostgreSQL · Vercel
+            </span>
           </div>
         </div>
       </div>
