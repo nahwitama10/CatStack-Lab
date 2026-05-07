@@ -4,45 +4,24 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 const navLinks = [
+  { label: 'Home', href: '/' },
   {
-    label: 'Services',
+    label: 'Cats',
     children: [
-      {
-        label: 'Architectural Design',
-        children: [
-          { label: 'Residential', href: '/portfolio?category=Residential&type=Architectural+Design' },
-          { label: 'Commercial', href: '/portfolio?category=Commercial&type=Architectural+Design' },
-        ],
-      },
-      { label: 'Planning Applications', href: '/portfolio?type=Architectural+Design' },
-      {
-        label: 'Interior Design',
-        children: [
-          { label: 'Residential', href: '/portfolio?category=Residential&type=Interior+Design' },
-          { label: 'Commercial', href: '/portfolio?category=Commercial&type=Interior+Design' },
-        ],
-      },
-      { label: 'Conservation & Heritage Design', href: '/portfolio?category=Conservation' },
-      {
-        label: 'Create & Construct',
-        children: [
-          { label: 'Residential', href: '/portfolio?category=Residential' },
-          { label: 'Commercial', href: '/portfolio?category=Commercial' },
-        ],
-      },
+      { label: 'All Cats', href: '/cats' },
+      { label: 'Breeds', href: '/cats/breeds' },
+      { label: 'Gallery', href: '/cats/gallery' },
     ],
   },
   {
-    label: 'Portfolio',
-    href: '/portfolio',
+    label: 'Projects',
     children: [
-      { label: 'All Projects', href: '/portfolio' },
-      { label: 'Residential', href: '/portfolio?category=Residential' },
-      { label: 'Commercial', href: '/portfolio?category=Commercial' },
-      { label: 'Conservation & Heritage', href: '/portfolio?category=Conservation' },
+      { label: 'Web Apps', href: '/projects?type=web' },
+      { label: 'Backend Systems', href: '/projects?type=backend' },
+      { label: 'Integrations', href: '/projects?type=integration' },
     ],
   },
-  { label: 'About', href: '/about' },
+  { label: 'About Me', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -54,7 +33,7 @@ export default function Navbar() {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => setScrolled(window.scrollY > 80)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -65,27 +44,58 @@ export default function Navbar() {
   }
 
   const handleMouseLeave = () => {
-    closeTimer.current = setTimeout(() => setActiveDropdown(null), 120)
+    closeTimer.current = setTimeout(() => setActiveDropdown(null), 150)
   }
 
+  const getItemStyle = (isActive: boolean, index: number): React.CSSProperties => ({
+    opacity: isActive ? 1 : 0,
+    transform: isActive
+      ? 'translateY(0px) scale(1)'
+      : 'translateY(6px) scale(0.98)',
+    transition: `
+      opacity 0.2s ease-out ${index * 40}ms,
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1) ${index * 40}ms
+    `,
+  })
+
+  const NAV_HEIGHT = 80;
   return (
     <>
       <nav
         style={{
-          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-          height: 'var(--nav-height)', display: 'flex', alignItems: 'center',
-          justifyContent: 'space-between', padding: '0 40px',
-          transition: 'background var(--transition-base), border-color var(--transition-base)',
-          background: scrolled ? 'rgba(10,10,10,0.96)' : 'transparent',
-          borderBottom: scrolled ? '1px solid rgba(200,196,188,0.12)' : '1px solid transparent',
-          backdropFilter: scrolled ? 'blur(12px)' : 'none',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          height: '80px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 24px',
+          gap: '28px',
+          transition: 'all 0.3s ease',
+
+          background: scrolled 
+            ? 'rgba(10,10,10,0.85)' 
+            : 'rgba(10,10,10,0.2)',
+
+          backdropFilter: 'blur(12px)',
+
+          borderBottom: scrolled 
+            ? '1px solid rgba(255,255,255,0.08)' 
+            : '1px solid transparent',
+
+          boxShadow: scrolled 
+            ? '0 4px 20px rgba(0,0,0,0.3)' 
+            : 'none',
         }}
       >
-        <Link href="/" style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 400, letterSpacing: '0.12em', color: 'var(--color-white)', textTransform: 'uppercase' }}>
+        <Link href="/" style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 400, letterSpacing: '0.08em', color: 'var(--color-white)', textTransform: 'uppercase' }}>
           Minale + Mann
         </Link>
 
-        <ul style={{ display: 'flex', gap: '36px', listStyle: 'none', alignItems: 'center' }} className="desktop-nav">
+        <ul style={{ display: 'flex', gap: '28px', listStyle: 'none', alignItems: 'center' }} className="desktop-nav">
           {navLinks.map((link) => (
             <li key={link.label} style={{ position: 'relative' }}
               onMouseEnter={() => link.children && handleMouseEnter(link.label)}
@@ -109,10 +119,43 @@ export default function Navbar() {
                 </button>
               )}
 
-              {link.children && activeDropdown === link.label && (
-                <div onMouseEnter={() => handleMouseEnter(link.label)} onMouseLeave={handleMouseLeave} style={dropdownStyle}>
-                  {link.children.map((child: any) => (
-                    <div key={child.label} style={{ marginBottom: child.children ? '16px' : '0' }}>
+              {link.children && (
+                  <div
+                    onMouseEnter={() => handleMouseEnter(link.label)}
+                    onMouseLeave={handleMouseLeave}
+                    style={{
+                      position: 'absolute',
+                      top: '100%',
+                      left: '50%',
+                      marginTop: '8px',
+                      paddingTop: '8px',
+
+                      background: 'rgba(18,17,15,0.95)',
+                      backdropFilter: 'blur(16px)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+
+                      padding: '20px 24px',
+                      minWidth: '220px',
+
+                      opacity: activeDropdown === link.label ? 1 : 0,
+                      pointerEvents: activeDropdown === link.label ? 'auto' : 'none',
+
+                      transform: activeDropdown === link.label
+                        ? 'translateX(-50%) translateY(0px)'
+                        : 'translateX(-50%) translateY(10px)',
+
+                      transition:
+                        'opacity 0.2s ease-out, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1)',
+                    }}
+                  >
+                  {link.children.map((child: any, index: number) => (
+                      <div
+                        key={child.label}
+                        style={{
+                          marginBottom: child.children ? '16px' : '0',
+                          ...getItemStyle(activeDropdown === link.label, index),
+                        }}
+                      >
                       {child.href && !child.children ? (
                         <Link href={child.href} style={dropdownItemStyle}>{child.label}</Link>
                       ) : (
@@ -120,8 +163,18 @@ export default function Navbar() {
                       )}
                       {child.children && (
                         <div style={{ paddingLeft: '12px', borderLeft: '1px solid rgba(200,196,188,0.2)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                          {child.children.map((sub: any) => (
-                            <Link key={sub.label} href={sub.href} style={dropdownSubItemStyle}>{sub.label}</Link>
+                          {child.children.map((sub: any, subIndex: number) => (
+                              <Link
+                                key={sub.label}
+                                href={sub.href}
+                                style={{
+                                  ...dropdownSubItemStyle,
+                                  ...getItemStyle(
+                                    activeDropdown === link.label,
+                                    index + subIndex + 1 // continue stagger
+                                  ),
+                                }}
+                              >{sub.label}</Link>
                           ))}
                         </div>
                       )}
@@ -211,10 +264,24 @@ const navLinkStyle: React.CSSProperties = {
 }
 
 const dropdownStyle: React.CSSProperties = {
-  position: 'absolute', top: 'calc(100% + 16px)', left: '50%',
-  transform: 'translateX(-50%)', background: 'rgba(18,17,15,0.97)',
-  backdropFilter: 'blur(16px)', border: '1px solid rgba(200,196,188,0.12)',
-  padding: '24px 28px', minWidth: '220px', animation: 'fadeInDown 0.25s ease forwards',
+  position: 'absolute',
+  top: '100%',
+  marginTop: '8px',
+  paddingTop: '8px',
+  left: '50%',
+  transform: 'translateX(-50%) translateY(10px)',
+
+  background: 'rgba(18,17,15,0.95)',
+  backdropFilter: 'blur(16px)',
+  border: '1px solid rgba(255,255,255,0.08)',
+
+  padding: '20px 24px',
+  minWidth: '220px',
+
+  opacity: 0,
+  pointerEvents: 'none',
+
+  transition: 'opacity 0.2s ease-out, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1)',
 }
 
 const dropdownItemStyle: React.CSSProperties = {
