@@ -3,214 +3,314 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-const roles = ['Fullstack Developer', 'ASP.NET Core Enjoyer', 'Cat Enthusiast 🐱', 'Next.js Builder', 'API Architect']
+const roles = [
+  'Fullstack Developer 🚀',
+  'ASP.NET Core Engineer ⚙️',
+  'Cat Enthusiast 🐱',
+  'Next.js Builder 🌐',
+  'API Architect 🔗',
+]
 
-// Inline SVG cat illustration
-function CatIllustration() {
+function CatSVG() {
   return (
-    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+    <svg viewBox="0 0 240 260" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+      {/* Shadow */}
+      <ellipse cx="120" cy="248" rx="60" ry="10" fill="rgba(0,0,0,0.08)" />
       {/* Body */}
-      <ellipse cx="100" cy="140" rx="55" ry="48" fill="#F97316" />
+      <ellipse cx="120" cy="190" rx="62" ry="54" fill="#f97316" />
       {/* Head */}
-      <circle cx="100" cy="82" r="46" fill="#F97316" />
+      <circle cx="120" cy="110" r="52" fill="#f97316" />
       {/* Left ear */}
-      <polygon points="62,48 50,20 80,42" fill="#F97316" />
-      <polygon points="64,46 55,28 76,43" fill="#FB7185" />
+      <polygon points="76,74 58,36 92,68" fill="#f97316" />
+      <polygon points="78,72 64,44 88,67" fill="#fb7185" />
       {/* Right ear */}
-      <polygon points="138,48 150,20 120,42" fill="#F97316" />
-      <polygon points="136,46 145,28 124,43" fill="#FB7185" />
-      {/* Face - eyes */}
-      <ellipse cx="84" cy="80" rx="10" ry="12" fill="#1C1917" className="animate-blink" />
-      <ellipse cx="116" cy="80" rx="10" ry="12" fill="#1C1917" className="animate-blink" />
-      <circle cx="87" cy="76" r="3" fill="white" />
-      <circle cx="119" cy="76" r="3" fill="white" />
+      <polygon points="164,74 182,36 148,68" fill="#f97316" />
+      <polygon points="162,72 176,44 152,67" fill="#fb7185" />
+      {/* Left eye */}
+      <ellipse cx="100" cy="106" rx="11" ry="13" fill="#1c1917" />
+      <ellipse cx="103" cy="102" rx="3.5" ry="3.5" fill="white" />
+      {/* Right eye */}
+      <ellipse cx="140" cy="106" rx="11" ry="13" fill="#1c1917" />
+      <ellipse cx="143" cy="102" rx="3.5" ry="3.5" fill="white" />
       {/* Nose */}
-      <ellipse cx="100" cy="94" rx="5" ry="3.5" fill="#FB7185" />
+      <ellipse cx="120" cy="122" rx="5.5" ry="4" fill="#fb7185" />
       {/* Mouth */}
-      <path d="M96 97 Q100 102 104 97" stroke="#78350F" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      <path d="M115 126 Q120 132 125 126" stroke="#c2410c" strokeWidth="1.5" strokeLinecap="round" fill="none" />
       {/* Whiskers left */}
-      <line x1="56" y1="90" x2="88" y2="94" stroke="#78350F" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
-      <line x1="54" y1="96" x2="87" y2="97" stroke="#78350F" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
-      <line x1="58" y1="102" x2="88" y2="100" stroke="#78350F" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
+      <line x1="62" y1="116" x2="106" y2="120" stroke="#78716c" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+      <line x1="60" y1="123" x2="105" y2="123" stroke="#78716c" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+      <line x1="64" y1="130" x2="106" y2="126" stroke="#78716c" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
       {/* Whiskers right */}
-      <line x1="144" y1="90" x2="112" y2="94" stroke="#78350F" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
-      <line x1="146" y1="96" x2="113" y2="97" stroke="#78350F" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
-      <line x1="142" y1="102" x2="112" y2="100" stroke="#78350F" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
+      <line x1="178" y1="116" x2="134" y2="120" stroke="#78716c" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+      <line x1="180" y1="123" x2="135" y2="123" stroke="#78716c" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+      <line x1="176" y1="130" x2="134" y2="126" stroke="#78716c" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
       {/* Belly */}
-      <ellipse cx="100" cy="148" rx="32" ry="30" fill="#FED7AA" />
+      <ellipse cx="120" cy="198" rx="36" ry="34" fill="#fed7aa" />
+      {/* Laptop screen */}
+      <rect x="72" y="170" width="96" height="58" rx="6" fill="#0d9488" />
+      <rect x="76" y="174" width="88" height="50" rx="4" fill="#0f766e" />
+      {/* Code on screen */}
+      <text x="120" y="195" textAnchor="middle" fill="#ccfbf1" fontSize="10" fontFamily="monospace" fontWeight="bold">{'const cat'}</text>
+      <text x="120" y="208" textAnchor="middle" fill="#fcd34d" fontSize="9" fontFamily="monospace">{'= () => 🐱'}</text>
+      <text x="120" y="219" textAnchor="middle" fill="#94a3b8" fontSize="8" fontFamily="monospace">{'// purr...'}</text>
+      {/* Laptop base */}
+      <rect x="60" y="226" width="120" height="8" rx="4" fill="#1c1917" />
       {/* Paws */}
-      <ellipse cx="65" cy="180" rx="16" ry="10" fill="#F97316" />
-      <ellipse cx="135" cy="180" rx="16" ry="10" fill="#F97316" />
-      <ellipse cx="65" cy="181" rx="12" ry="7" fill="#FED7AA" />
-      <ellipse cx="135" cy="181" rx="12" ry="7" fill="#FED7AA" />
+      <ellipse cx="78" cy="234" rx="18" ry="11" fill="#f97316" />
+      <ellipse cx="78" cy="235" rx="14" ry="8" fill="#fed7aa" />
+      <ellipse cx="162" cy="234" rx="18" ry="11" fill="#f97316" />
+      <ellipse cx="162" cy="235" rx="14" ry="8" fill="#fed7aa" />
       {/* Tail */}
-      <path d="M152 155 Q180 130 170 100 Q162 75 155 90" stroke="#F97316" strokeWidth="14" strokeLinecap="round" fill="none" className="animate-tailWag" style={{ transformOrigin: '152px 155px' }} />
-      {/* Laptop */}
-      <rect x="52" y="166" width="96" height="6" rx="3" fill="#1C1917" opacity="0.8" />
-      <rect x="58" y="148" width="84" height="20" rx="4" fill="#0D9488" />
-      <text x="100" y="162" textAnchor="middle" fill="#CCFBF1" fontSize="8" fontFamily="monospace" fontWeight="bold">{'</>'}</text>
+      <path d="M178 210 Q210 185 200 155 Q192 130 182 148"
+        stroke="#f97316" strokeWidth="16" strokeLinecap="round" fill="none"
+        style={{ transformOrigin: '178px 210px', animation: 'tailWag 1.2s ease-in-out infinite' }} />
     </svg>
   )
 }
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0)
-  const [visible, setVisible] = useState(true)
+  const [roleIdx, setRoleIdx] = useState(0)
+  const [show, setShow] = useState(true)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisible(false)
-      setTimeout(() => {
-        setRoleIndex(i => (i + 1) % roles.length)
-        setVisible(true)
-      }, 300)
+    setMounted(true)
+    const t = setInterval(() => {
+      setShow(false)
+      setTimeout(() => { setRoleIdx(i => (i + 1) % roles.length); setShow(true) }, 350)
     }, 2800)
-    return () => clearInterval(interval)
+    return () => clearInterval(t)
   }, [])
 
+  const techPills = [
+    { label: 'ASP.NET Core', bg: '#f0fdfa', color: '#0d9488', border: '#99f6e4' },
+    { label: 'Next.js', bg: '#f5f5f4', color: '#1c1917', border: '#e7e5e4' },
+    { label: 'TypeScript', bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
+    { label: 'PostgreSQL', bg: '#fff7ed', color: '#ea580c', border: '#fed7aa' },
+    { label: 'Docker', bg: '#f0f9ff', color: '#0284c7', border: '#bae6fd' },
+    { label: 'Tailwind CSS', bg: '#ecfeff', color: '#0891b2', border: '#a5f3fc' },
+  ]
+
   return (
-    <section className="relative min-h-screen bg-cat-cream overflow-hidden flex items-center"
-      style={{ paddingTop: 'var(--nav-height)', fontFamily: 'var(--font-body)' }}>
+    <section style={{
+      minHeight: '100vh',
+      background: 'var(--cream)',
+      paddingTop: 'var(--nav-height)',
+      position: 'relative',
+      overflow: 'hidden',
+      display: 'flex',
+      alignItems: 'center',
+    }}>
+      {/* Bg blobs */}
+      <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(249,115,22,0.1) 0%, transparent 70%)', borderRadius: '9999px', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-60px', left: '-60px', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%)', borderRadius: '9999px', pointerEvents: 'none' }} />
+      <div className="dot-grid" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.6 }} />
 
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Large orange blob */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-cat-orange/10 rounded-full blur-3xl" />
-        {/* Teal blob */}
-        <div className="absolute bottom-0 -left-24 w-80 h-80 bg-cat-teal/10 rounded-full blur-3xl" />
-        {/* Yellow accent */}
-        <div className="absolute top-1/3 left-1/4 w-40 h-40 bg-cat-yellow/20 rounded-full blur-2xl" />
-        {/* Floating paw prints */}
-        {['top-20 left-12', 'top-40 right-32', 'bottom-32 left-1/3', 'top-1/2 right-12'].map((pos, i) => (
-          <div key={i} className={`absolute ${pos} text-cat-orange/15 text-4xl select-none`}
-            style={{ animation: `float ${3 + i * 0.5}s ease-in-out infinite`, animationDelay: `${i * 0.7}s` }}>
-            🐾
-          </div>
-        ))}
-        {/* Grid dots */}
-        <div className="absolute inset-0"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(249,115,22,0.08) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-      </div>
+      {/* Floating paws */}
+      {mounted && [
+        { pos: { top: '15%', left: '6%' }, delay: '0s', size: '2rem' },
+        { pos: { top: '30%', right: '8%' }, delay: '0.8s', size: '1.5rem' },
+        { pos: { bottom: '25%', left: '10%' }, delay: '1.6s', size: '1.8rem' },
+        { pos: { top: '60%', right: '5%' }, delay: '2.4s', size: '1.3rem' },
+      ].map((p, i) => (
+        <div key={i} style={{
+          position: 'absolute', ...p.pos,
+          fontSize: p.size, opacity: 0.12, pointerEvents: 'none',
+          animation: `float 4s ease-in-out infinite`,
+          animationDelay: p.delay,
+        }}>🐾</div>
+      ))}
 
-      <div className="max-w-7xl mx-auto px-6 py-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '60px 24px', width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }} className="hero-grid">
 
-          {/* Left: text */}
-          <div className="space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-cat-teal/10 border border-cat-teal/20 rounded-full animate-slideUp">
-              <span className="w-2 h-2 bg-cat-teal rounded-full animate-purr" />
-              <span className="text-cat-teal text-sm font-semibold tracking-wide">Available for hire</span>
+          {/* Left */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+            {/* Available badge */}
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              padding: '6px 16px', background: 'rgba(13,148,136,0.08)',
+              border: '1.5px solid rgba(13,148,136,0.2)', borderRadius: '9999px',
+              width: 'fit-content',
+              animation: 'slideUp 0.5s ease forwards',
+            }}>
+              <span style={{ width: '8px', height: '8px', background: '#0d9488', borderRadius: '9999px', animation: 'purr 2s ease-in-out infinite' }} />
+              <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0d9488', letterSpacing: '0.05em' }}>Available for hire</span>
             </div>
 
-            {/* Heading */}
-            <div className="animate-slideUp" style={{ animationDelay: '0.1s', opacity: 0 }}>
-              <h1 className="font-display text-5xl lg:text-7xl font-bold text-cat-dark leading-tight">
+            {/* Name */}
+            <div style={{ animation: 'slideUp 0.5s 0.1s ease both' }}>
+              <h1 className="font-display" style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#1c1917' }}>
                 Ibnu
-                <span className="text-cat-orange italic"> Nahwitama</span>
+                <span style={{ color: 'var(--orange)', fontStyle: 'italic' }}> Nahwitama</span>
               </h1>
-              <div className="mt-3 h-12 flex items-center">
-                <p className={`font-body text-xl lg:text-2xl font-medium text-cat-grey transition-all duration-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
-                  {roles[roleIndex]}
+              {/* Role rotator */}
+              <div style={{ height: '36px', marginTop: '12px', overflow: 'hidden' }}>
+                <p style={{
+                  fontSize: '1.25rem', fontWeight: 600, color: '#78716c',
+                  transition: 'all 0.35s cubic-bezier(0.4,0,0.2,1)',
+                  opacity: show ? 1 : 0,
+                  transform: show ? 'translateY(0)' : 'translateY(8px)',
+                }}>
+                  {roles[roleIdx]}
                 </p>
               </div>
             </div>
 
-            {/* Description */}
-            <p className="text-cat-grey text-lg leading-relaxed max-w-lg animate-slideUp"
-              style={{ animationDelay: '0.2s', opacity: 0 }}>
+            {/* Desc */}
+            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#57534e', maxWidth: '480px', animation: 'slideUp 0.5s 0.2s ease both' }}>
               I build enterprise-grade web systems and modern frontends — powered by{' '}
-              <span className="text-cat-orange font-semibold">ASP.NET Core</span>,{' '}
-              <span className="text-cat-teal font-semibold">Next.js</span>, and an unreasonable love for cats 🐱.
+              <strong style={{ color: 'var(--orange)' }}>ASP.NET Core</strong>,{' '}
+              <strong style={{ color: 'var(--teal)' }}>Next.js</strong>, and an unreasonable love for cats 🐱
             </p>
 
-            {/* Tech stack pills */}
-            <div className="flex flex-wrap gap-2 animate-slideUp" style={{ animationDelay: '0.3s', opacity: 0 }}>
-              {[
-                { label: 'ASP.NET Core', color: 'bg-cat-teal/10 text-cat-teal border-cat-teal/20' },
-                { label: 'Next.js', color: 'bg-cat-dark/10 text-cat-dark border-cat-dark/20' },
-                { label: 'TypeScript', color: 'bg-blue-50 text-blue-600 border-blue-200' },
-                { label: 'PostgreSQL', color: 'bg-cat-orange/10 text-cat-orange border-cat-orange/20' },
-                { label: 'Docker', color: 'bg-sky-50 text-sky-600 border-sky-200' },
-                { label: 'Tailwind CSS', color: 'bg-cyan-50 text-cyan-600 border-cyan-200' },
-              ].map(tech => (
-                <span key={tech.label} className={`tag-pill border ${tech.color}`}>{tech.label}</span>
+            {/* Tech pills */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', animation: 'slideUp 0.5s 0.3s ease both' }}>
+              {techPills.map(t => (
+                <span key={t.label} className="pill" style={{ background: t.bg, color: t.color, borderColor: t.border }}>
+                  {t.label}
+                </span>
               ))}
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 animate-slideUp" style={{ animationDelay: '0.4s', opacity: 0 }}>
-              <Link href="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-cat-orange text-white rounded-full font-bold text-base shadow-cat hover:shadow-cat-lg hover:-translate-y-1 hover:bg-orange-600 transition-all duration-200"
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', animation: 'slideUp 0.5s 0.4s ease both' }}>
+              <Link href="/projects" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                padding: '12px 24px', background: 'var(--orange)', color: 'white',
+                borderRadius: '9999px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none',
+                boxShadow: '0 4px 20px rgba(249,115,22,0.35)',
+                transition: 'all 0.2s',
+              }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 28px rgba(249,115,22,0.45)' }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'none'; (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(249,115,22,0.35)' }}
               >
                 View Projects 🛠️
               </Link>
-              <Link href="/about"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-cat-orange/30 text-cat-orange rounded-full font-bold text-base hover:border-cat-orange hover:bg-cat-orange/5 hover:-translate-y-1 transition-all duration-200"
+              <Link href="/about" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                padding: '12px 24px', background: 'white', color: 'var(--orange)',
+                border: '2px solid rgba(249,115,22,0.25)', borderRadius: '9999px',
+                fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none',
+                transition: 'all 0.2s',
+              }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--orange)' }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'none'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(249,115,22,0.25)' }}
               >
                 About Me 😺
               </Link>
             </div>
 
-            {/* Social links */}
-            <div className="flex items-center gap-4 animate-slideUp" style={{ animationDelay: '0.5s', opacity: 0 }}>
-              <span className="text-sm text-cat-mid-grey font-medium">Find me on:</span>
+            {/* Social row */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', animation: 'slideUp 0.5s 0.5s ease both' }}>
+              <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#a8a29e', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Find me on</span>
               {[
-                { label: 'GitHub', href: 'https://github.com/nahwitama10', icon: '⌨️' },
-                { label: 'LinkedIn', href: '#', icon: '💼' },
-                { label: 'Email', href: '/contact', icon: '📬' },
+                { icon: '⌨️', label: 'GitHub', href: 'https://github.com/nahwitama10' },
+                { icon: '💼', label: 'LinkedIn', href: '#' },
+                { icon: '📬', label: 'Email', href: '/contact' },
               ].map(s => (
                 <a key={s.label} href={s.href}
-                  className="flex items-center gap-1.5 text-sm font-semibold text-cat-grey hover:text-cat-orange transition-colors"
+                  style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.875rem', fontWeight: 600, color: '#57534e', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = 'var(--orange)'}
+                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#57534e'}
                   target={s.href.startsWith('http') ? '_blank' : undefined}
                   rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
-                  <span>{s.icon}</span> {s.label}
+                  {s.icon} {s.label}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Right: cat illustration */}
-          <div className="flex justify-center lg:justify-end animate-slideUp" style={{ animationDelay: '0.2s', opacity: 0 }}>
-            <div className="relative">
-              {/* Glow */}
-              <div className="absolute inset-0 bg-cat-orange/20 rounded-full blur-3xl scale-90" />
-              {/* Cat SVG */}
-              <div className="relative w-64 h-64 lg:w-80 lg:h-80 animate-float">
-                <CatIllustration />
+          {/* Right: cat + floating badges */}
+          <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
+            {/* Glow */}
+            <div style={{
+              position: 'absolute', inset: '-20px',
+              background: 'radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 65%)',
+              borderRadius: '9999px', pointerEvents: 'none',
+            }} />
+            {/* Cat */}
+            <div style={{ width: '280px', height: '280px', animation: 'float 4s ease-in-out infinite', position: 'relative', zIndex: 1 }}>
+              <CatSVG />
+            </div>
+            {/* Badge: Fast APIs */}
+            <div style={{
+              position: 'absolute', top: '10%', left: '-10%',
+              background: 'white', borderRadius: '14px', padding: '10px 14px',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1)', border: '1px solid rgba(249,115,22,0.1)',
+              display: 'flex', alignItems: 'center', gap: '10px',
+              animation: 'float 4s 0.5s ease-in-out infinite', zIndex: 2,
+            }}>
+              <span style={{ fontSize: '1.4rem' }}>⚡</span>
+              <div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#1c1917' }}>Fast APIs</div>
+                <div style={{ fontSize: '0.65rem', color: '#a8a29e' }}>ASP.NET Core</div>
               </div>
-              {/* Floating badges */}
-              <div className="absolute -top-4 -left-8 bg-white rounded-cat shadow-cat px-3 py-2 flex items-center gap-2 animate-float" style={{ animationDelay: '0.5s' }}>
-                <span className="text-lg">⚡</span>
-                <div>
-                  <div className="text-xs font-bold text-cat-dark">Fast APIs</div>
-                  <div className="text-xs text-cat-mid-grey">ASP.NET Core</div>
-                </div>
+            </div>
+            {/* Badge: Ships fast */}
+            <div style={{
+              position: 'absolute', bottom: '12%', right: '-8%',
+              background: 'var(--teal)', borderRadius: '14px', padding: '10px 14px',
+              boxShadow: '0 8px 32px rgba(13,148,136,0.3)',
+              display: 'flex', alignItems: 'center', gap: '10px', color: 'white',
+              animation: 'float 4s 1s ease-in-out infinite', zIndex: 2,
+            }}>
+              <span style={{ fontSize: '1.4rem' }}>🚀</span>
+              <div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700 }}>Ships Fast</div>
+                <div style={{ fontSize: '0.65rem', opacity: 0.8 }}>Next.js + Vercel</div>
               </div>
-              <div className="absolute -bottom-4 -right-6 bg-cat-teal text-white rounded-cat shadow-teal px-3 py-2 flex items-center gap-2 animate-float" style={{ animationDelay: '1s' }}>
-                <span className="text-lg">🚀</span>
-                <div>
-                  <div className="text-xs font-bold">Ships fast</div>
-                  <div className="text-xs opacity-80">Next.js + Vercel</div>
-                </div>
-              </div>
-              <div className="absolute top-1/2 -right-10 bg-cat-yellow rounded-cat shadow-cat px-3 py-2 flex items-center gap-2 animate-float" style={{ animationDelay: '1.5s' }}>
-                <span className="text-lg">🐱</span>
-                <div className="text-xs font-bold text-cat-dark">Cat approved</div>
-              </div>
+            </div>
+            {/* Badge: Cat approved */}
+            <div style={{
+              position: 'absolute', top: '45%', right: '-12%',
+              background: '#fcd34d', borderRadius: '14px', padding: '10px 14px',
+              boxShadow: '0 8px 32px rgba(252,211,77,0.4)',
+              display: 'flex', alignItems: 'center', gap: '6px',
+              animation: 'float 4s 1.5s ease-in-out infinite', zIndex: 2,
+            }}>
+              <span style={{ fontSize: '1.2rem' }}>🐱</span>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#1c1917', whiteSpace: 'nowrap' }}>Cat Approved</div>
             </div>
           </div>
         </div>
 
-        {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
-          <span className="text-xs font-semibold text-cat-mid-grey tracking-widest uppercase">Scroll</span>
-          <div className="w-5 h-8 border-2 border-cat-orange/40 rounded-full flex justify-center pt-1.5">
-            <div className="w-1 h-2 bg-cat-orange/60 rounded-full animate-bounce" />
+        {/* Scroll indicator */}
+        <div style={{
+          position: 'absolute', bottom: '32px', left: '50%', transform: 'translateX(-50%)',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
+          animation: 'float 3s ease-in-out infinite',
+        }}>
+          <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#a8a29e', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Scroll</span>
+          <div style={{ width: '22px', height: '36px', border: '2px solid rgba(249,115,22,0.3)', borderRadius: '11px', display: 'flex', justifyContent: 'center', paddingTop: '6px' }}>
+            <div style={{ width: '4px', height: '8px', background: 'var(--orange)', borderRadius: '2px', animation: 'float 1.5s ease-in-out infinite' }} />
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes purr {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.3); }
+        }
+        @keyframes tailWag {
+          0%, 100% { transform: rotate(-15deg); }
+          50% { transform: rotate(15deg); }
+        }
+        @media (max-width: 768px) {
+          .hero-grid { grid-template-columns: 1fr !important; }
+          .hero-grid > div:last-child { display: none; }
+        }
+      `}</style>
     </section>
   )
 }
