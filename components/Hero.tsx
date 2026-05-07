@@ -140,7 +140,7 @@ export default function Hero() {
 
             {/* Name */}
             <div style={{ animation: 'slideUp 0.5s 0.1s ease both' }}>
-              <h1 className="font-display" style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#1c1917' }}>
+              <h1 className="font-display" style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', fontWeight: 700, letterSpacing: '-0.05em', lineHeight: 0.98, color: '#1c1917' }}>
                 Ibnu
                 <span style={{ color: 'var(--orange)', fontStyle: 'italic' }}> Nahwitama</span>
               </h1>

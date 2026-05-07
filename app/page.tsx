@@ -64,7 +64,7 @@ function SkillBar({ name, level, color }: { name: string; level: number; color: 
         <span style={{ fontSize: '0.8rem', fontWeight: 700, color }}>  {level}%</span>
       </div>
       <div className="skill-bar">
-        <div className="skill-bar-fill" style={{ width: `${width}%`, background: `linear-gradient(90deg, ${color}, var(--orange))` }} />
+        <div className="skill-bar-fill" style={{ width: `${width}%`, background: `linear-gradient(135deg, rgba(249,115,22,1) 0%, rgba(251,146,60,1) 35%, rgba(13,148,136,0.95) 100%)` }} />
       </div>
     </div>
   )
@@ -123,12 +123,16 @@ export default function AboutPage() {
                   { number: '4+', label: 'Years Experience', icon: '🧠', color: '#8b5cf6' },
                   { number: '100%', label: 'Production Focused', icon: '🛡️', color: '#f59e0b' },
                 ].map(stat => (
-                  <div key={stat.label} style={{
-                    background: 'white', borderRadius: '20px', padding: '24px',
-                    border: '1.5px solid rgba(249,115,22,0.1)',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-                    textAlign: 'center',
-                  }}>
+                    <div
+                      key={stat.label}
+                      className="glass-card"
+                      style={{
+                        borderRadius: '20px',
+                        padding: '24px',
+                        textAlign: 'center',
+                        backdropFilter: 'blur(12px)',
+                      }}
+                    >
                     <div style={{ fontSize: '2rem', marginBottom: '4px' }}>{stat.icon}</div>
                     <div className="font-display" style={{ fontSize: '2.2rem', fontWeight: 700, color: stat.color, lineHeight: 1 }}>{stat.number}</div>
                     <div style={{ fontSize: '0.75rem', color: '#a8a29e', fontWeight: 600, marginTop: '4px', letterSpacing: '0.04em' }}>{stat.label}</div>
@@ -245,6 +249,7 @@ export default function AboutPage() {
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: '24px',
+                backdropFilter: 'blur(12px)'
               }}
             >
               {[
