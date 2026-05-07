@@ -1,84 +1,102 @@
 'use client'
+
 import Link from 'next/link'
 
 const footerLinks = {
-  Services: [
-    { label: 'Architectural Design', href: '/residential-architects' },
-    { label: 'Interior Design', href: '/residential-interior-design' },
-    { label: 'Planning Applications', href: '/planning-applications' },
-    { label: 'Conservation & Heritage', href: '/conservation-architects' },
-    { label: 'Create & Construct', href: '/residential-architectural-design-services' },
+  '🐱 Cats': [
+    { label: 'All Cats', href: '/cats' },
+    { label: 'Breeds', href: '/cats/breeds' },
+    { label: 'Gallery', href: '/cats/gallery' },
   ],
-  Portfolio: [
-    { label: 'Residential', href: '/residential-portfolio' },
-    { label: 'Commercial', href: '/commercial-portfolio' },
-    { label: 'Conservation', href: '/conservation-heritage-design-portfolio' },
+  '🛠️ Projects': [
+    { label: 'Web Apps', href: '/projects?type=web' },
+    { label: 'Backend', href: '/projects?type=backend' },
+    { label: 'Integrations', href: '/projects?type=integration' },
   ],
-  Studio: [
+  '😺 Me': [
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'GitHub', href: 'https://github.com/nahwitama10' },
   ],
 }
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--color-dark)', borderTop: '1px solid rgba(200,196,188,0.08)', padding: 'clamp(60px, 10vw, 100px) clamp(24px, 8vw, 120px) 40px' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.5fr repeat(3, 1fr)', gap: '48px', marginBottom: '80px' }} className="footer-grid">
-        {/* Brand */}
-        <div>
-          <Link href="/" style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 400, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-white)', display: 'block', marginBottom: '20px' }}>
-            Minale + Mann
-          </Link>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', lineHeight: 1.8, color: 'var(--color-mid-grey)', maxWidth: '280px', marginBottom: '32px' }}>
-            Award winning architectural and interior design studio based in London.
-          </p>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-accent)' }}>
-            Design Matters
-          </p>
-        </div>
+    <footer className="bg-cat-dark text-white relative overflow-hidden" style={{ fontFamily: 'var(--font-body)' }}>
+      {/* Top wave */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cat-orange via-cat-yellow to-cat-teal" />
 
-        {/* Link columns */}
-        {Object.entries(footerLinks).map(([group, links]) => (
-          <div key={group}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-mid-grey)', marginBottom: '24px' }}>
-              {group}
-            </p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {links.map(l => (
-                <li key={l.label}>
-                  <Link href={l.href} style={{
-                    fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--color-warm-grey)',
-                    transition: 'color 0.2s',
-                  }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--color-white)' }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'var(--color-warm-grey)' }}
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+      {/* Paw print bg */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5">
+        {['top-8 left-12', 'top-16 right-24', 'bottom-12 left-1/3', 'bottom-8 right-8'].map((pos, i) => (
+          <div key={i} className={`absolute ${pos} text-5xl`}>🐾</div>
         ))}
       </div>
 
-      {/* Bottom bar */}
-      <div style={{ borderTop: '1px solid rgba(200,196,188,0.08)', paddingTop: '28px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.68rem', color: 'var(--color-mid-grey)', letterSpacing: '0.06em' }}>
-          © {new Date().getFullYear()} Minale + Mann. All rights reserved.
-        </p>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.68rem', color: 'var(--color-mid-grey)' }}>
-          London Design Studio
-        </p>
-      </div>
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-8 relative">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
 
-      <style>{`
-        @media (max-width: 768px) {
-          .footer-grid { grid-template-columns: 1fr 1fr !important; }
-          .footer-grid > *:first-child { grid-column: span 2; }
-        }
-      `}</style>
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <span className="text-2xl">🐱</span>
+              <span className="font-display text-xl font-bold">
+                CatStack<span className="text-cat-orange"> Lab</span>
+              </span>
+            </Link>
+            <p className="text-stone-400 text-sm leading-relaxed mb-6">
+              Fullstack developer building enterprise systems and modern web apps. Powered by coffee & cats.
+            </p>
+            <div className="flex gap-3">
+              {[
+                { icon: '⌨️', href: 'https://github.com/nahwitama10', label: 'GitHub' },
+                { icon: '💼', href: '#', label: 'LinkedIn' },
+                { icon: '📬', href: '/contact', label: 'Email' },
+              ].map(s => (
+                <a key={s.label} href={s.href}
+                  className="w-9 h-9 bg-stone-800 hover:bg-cat-orange rounded-xl flex items-center justify-center text-base transition-all duration-200 hover:-translate-y-0.5"
+                  target={s.href.startsWith('http') ? '_blank' : undefined}
+                  rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  aria-label={s.label}
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Links */}
+          {Object.entries(footerLinks).map(([group, links]) => (
+            <div key={group}>
+              <p className="text-xs font-bold tracking-widest uppercase text-stone-500 mb-4">{group}</p>
+              <ul className="flex flex-col gap-3">
+                {links.map(l => (
+                  <li key={l.label}>
+                    <Link href={l.href}
+                      className="text-stone-400 hover:text-cat-orange text-sm transition-colors duration-200"
+                      target={l.href.startsWith('http') ? '_blank' : undefined}
+                      rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom bar */}
+        <div className="border-t border-stone-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-stone-500 text-sm">
+            © {new Date().getFullYear()} Ibnu Nahwitama · Made with 🧡 & 🐱 in Indonesia
+          </p>
+          <div className="flex items-center gap-2 px-4 py-2 bg-stone-800 rounded-full">
+            <span className="w-2 h-2 bg-cat-teal rounded-full animate-purr" />
+            <span className="text-stone-400 text-xs font-medium">Built with Next.js + Tailwind · Deployed on Vercel</span>
+          </div>
+        </div>
+      </div>
     </footer>
   )
 }
