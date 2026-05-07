@@ -4,11 +4,11 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 const roles = [
-  'Fullstack Developer 🚀',
-  'ASP.NET Core Engineer ⚙️',
-  'Cat Enthusiast 🐱',
-  'Next.js Builder 🌐',
-  'API Architect 🔗',
+  'Fullstack Engineer 🚀',
+  'ASP.NET Core Specialist ⚙️',
+  'Next.js Frontend Builder 🌐',
+  'REST API Architect 🔗',
+  'Enterprise Systems Developer 🏢',
 ]
 
 function CatSVG() {
@@ -144,6 +144,14 @@ export default function Hero() {
                 Ibnu
                 <span style={{ color: 'var(--orange)', fontStyle: 'italic' }}> Nahwitama</span>
               </h1>
+              <div
+              style={{
+                display: 'flex',
+                gap: '8px',
+                flexWrap: 'wrap',
+                marginTop: '18px',
+              }}
+            >Open to Opportunities</div>
               {/* Role rotator */}
               <div style={{ height: '36px', marginTop: '12px', overflow: 'hidden' }}>
                 <p style={{
@@ -158,10 +166,20 @@ export default function Hero() {
             </div>
 
             {/* Desc */}
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#57534e', maxWidth: '480px', animation: 'slideUp 0.5s 0.2s ease both' }}>
-              I build enterprise-grade web systems and modern frontends — powered by{' '}
+            <p
+              style={{
+                fontSize: '1.05rem',
+                lineHeight: 1.8,
+                color: '#57534e',
+                maxWidth: '560px',
+                animation: 'slideUp 0.5s 0.2s ease both',
+              }}
+            >
+              I build scalable web applications, enterprise workflow systems, and
+              production-ready APIs using{' '}
               <strong style={{ color: 'var(--orange)' }}>ASP.NET Core</strong>,{' '}
-              <strong style={{ color: 'var(--teal)' }}>Next.js</strong>, and an unreasonable love for cats 🐱
+              <strong style={{ color: 'var(--teal)' }}>Next.js</strong>, TypeScript,
+              and modern frontend architecture principles.
             </p>
 
             {/* Tech pills */}
@@ -172,6 +190,48 @@ export default function Hero() {
                 </span>
               ))}
             </div>
+
+            {/* Engineering Metrics */}
+            <div
+              style={{
+                display: 'flex',
+                gap: '24px',
+                flexWrap: 'wrap',
+                animation: 'slideUp 0.5s 0.35s ease both',
+              }}
+            >
+              {[
+                { value: '30+', label: 'Projects' },
+                { value: '50+', label: 'APIs Built' },
+                { value: '4+', label: 'Years Exp' },
+              ].map((item) => (
+                <div key={item.label}>
+                  <div
+                    style={{
+                      fontSize: '1.4rem',
+                      fontWeight: 800,
+                      color: 'var(--orange)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    {item.value}
+                  </div>
+
+                  <div
+                    style={{
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      color: '#a8a29e',
+                      marginTop: '4px',
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {item.label}
+                  </div>
+                </div>
+              ))}
+            </div>            
 
             {/* CTAs */}
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', animation: 'slideUp 0.5s 0.4s ease both' }}>
@@ -206,7 +266,7 @@ export default function Hero() {
               <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#a8a29e', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Find me on</span>
               {[
                 { icon: '⌨️', label: 'GitHub', href: 'https://github.com/nahwitama10' },
-                { icon: '💼', label: 'LinkedIn', href: '#' },
+                { icon: '💼', label: 'LinkedIn', href: 'https://www.linkedin.com/in/ibnu-nahwitama-a00bb3221/' },
                 { icon: '📬', label: 'Email', href: '/contact' },
               ].map(s => (
                 <a key={s.label} href={s.href}
@@ -220,6 +280,15 @@ export default function Hero() {
                 </a>
               ))}
             </div>
+            <p
+              style={{
+                fontSize: '0.85rem',
+                color: '#78716c',
+                marginTop: '8px',
+              }}
+            >
+              Actively building and shipping frontend + backend projects on GitHub.
+            </p>
           </div>
 
           {/* Right: cat + floating badges */}
@@ -244,8 +313,13 @@ export default function Hero() {
             }}>
               <span style={{ fontSize: '1.4rem' }}>⚡</span>
               <div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#1c1917' }}>Fast APIs</div>
-                <div style={{ fontSize: '0.65rem', color: '#a8a29e' }}>ASP.NET Core</div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#1c1917' }}>
+                  REST APIs
+                </div>
+
+                <div style={{ fontSize: '0.65rem', color: '#a8a29e' }}>
+                  ASP.NET Core
+                </div>
               </div>
             </div>
             {/* Badge: Ships fast */}
@@ -258,20 +332,56 @@ export default function Hero() {
             }}>
               <span style={{ fontSize: '1.4rem' }}>🚀</span>
               <div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700 }}>Ships Fast</div>
-                <div style={{ fontSize: '0.65rem', opacity: 0.8 }}>Next.js + Vercel</div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700 }}>
+                  Production Ready
+                </div>
+
+                <div style={{ fontSize: '0.65rem', opacity: 0.8 }}>
+                  Next.js + PostgreSQL
+                </div>
               </div>
             </div>
-            {/* Badge: Cat approved */}
-            <div style={{
-              position: 'absolute', top: '45%', right: '-12%',
-              background: '#fcd34d', borderRadius: '14px', padding: '10px 14px',
-              boxShadow: '0 8px 32px rgba(252,211,77,0.4)',
-              display: 'flex', alignItems: 'center', gap: '6px',
-              animation: 'float 4s 1.5s ease-in-out infinite', zIndex: 2,
-            }}>
-              <span style={{ fontSize: '1.2rem' }}>🐱</span>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#1c1917', whiteSpace: 'nowrap' }}>Cat Approved</div>
+            {/* Badge: System Design */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '45%',
+                right: '-12%',
+                background: '#f5f3ff',
+                borderRadius: '14px',
+                padding: '10px 14px',
+                boxShadow: '0 8px 32px rgba(139,92,246,0.18)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                animation: 'float 4s 1.5s ease-in-out infinite',
+                zIndex: 2,
+                border: '1px solid rgba(139,92,246,0.12)',
+              }}
+            >
+              <span style={{ fontSize: '1.2rem' }}>🧠</span>
+
+              <div>
+                <div
+                  style={{
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    color: '#1c1917',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  Clean Architecture
+                </div>
+
+                <div
+                  style={{
+                    fontSize: '0.65rem',
+                    color: '#8b5cf6',
+                  }}
+                >
+                  Scalable Systems
+                </div>
+              </div>
             </div>
           </div>
         </div>

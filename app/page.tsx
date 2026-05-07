@@ -6,28 +6,48 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 const timeline = [
-  { year: '2024–Now', role: 'Senior Fullstack Developer', place: 'Enterprise Client', desc: 'Building workflow management systems and REST APIs with ASP.NET Core, PostgreSQL, and React frontends.' },
-  { year: '2022–2024', role: 'Fullstack Developer', place: 'Software House', desc: 'Delivered 20+ web projects across e-commerce, HR systems, and payment integrations for Indonesian SMEs.' },
-  { year: '2021–2022', role: 'Junior Backend Developer', place: 'Startup', desc: 'Built the initial API layer for a logistics SaaS product. First production experience with microservices.' },
-  { year: '2017–2021', role: 'Computer Science Degree', place: 'University', desc: 'Graduated with a focus on software engineering. Final project: a real-time inventory system with barcode scanning.' },
+  {
+    year: '2024 — Present',
+    role: 'Senior Fullstack Developer',
+    place: 'Enterprise Workflow Systems',
+    desc: 'Designing and maintaining enterprise-scale workflow management platforms using ASP.NET Core, PostgreSQL, and React/Next.js. Focused on approval systems, notification architecture, API integrations, and scalable business process automation.',
+  },
+  {
+    year: '2022 — 2024',
+    role: 'Fullstack Developer',
+    place: 'Software House',
+    desc: 'Delivered production-ready systems for Indonesian businesses including HR platforms, procurement systems, dashboards, and payment-integrated web applications. Worked closely with clients from requirement gathering through deployment.',
+  },
+  {
+    year: '2021 — 2022',
+    role: 'Backend Developer',
+    place: 'Logistics SaaS Startup',
+    desc: 'Built REST APIs and backend services for operational logistics workflows. Contributed to authentication systems, database optimization, and early microservice adoption.',
+  },
+  {
+    year: '2017 — 2021',
+    role: 'Computer Science Degree',
+    place: 'Software Engineering Focus',
+    desc: 'Focused on backend systems, software architecture, and database engineering. Final project involved a real-time inventory platform with barcode-based transaction tracking.',
+  },
 ]
 
 const skills = [
-  { name: 'ASP.NET Core / C#', level: 92, color: 'var(--teal)' },
-  { name: 'Next.js / React', level: 88, color: 'var(--orange)' },
-  { name: 'PostgreSQL / SQL Server', level: 85, color: '#8b5cf6' },
-  { name: 'TypeScript', level: 84, color: '#2563eb' },
-  { name: 'Docker / DevOps', level: 72, color: '#0891b2' },
-  { name: 'Tailwind CSS', level: 90, color: '#06b6d4' },
+  { name: 'ASP.NET Core & C#', level: 92, color: 'var(--teal)' },
+  { name: 'Next.js / React Ecosystem', level: 89, color: 'var(--orange)' },
+  { name: 'SQL Server & PostgreSQL', level: 87, color: '#8b5cf6' },
+  { name: 'REST API Architecture', level: 90, color: '#2563eb' },
+  { name: 'TypeScript', level: 84, color: '#0891b2' },
+  { name: 'Tailwind CSS & UI Systems', level: 91, color: '#06b6d4' },
 ]
 
 const funFacts = [
-  { icon: '🐱', text: 'Owned by 2 cats (they own me, really)' },
-  { icon: '☕', text: 'Coffee drinker — at least 3 cups before lunch' },
-  { icon: '🌙', text: 'Best code written after midnight' },
-  { icon: '🇮🇩', text: 'Based in Indonesia, building globally' },
-  { icon: '🎮', text: 'Strategy game enjoyer on weekends' },
-  { icon: '📚', text: 'Currently reading: Clean Architecture' },
+  { icon: '🇮🇩', text: 'Based in Indonesia, collaborating with global technologies and modern web stacks' },
+  { icon: '⚡', text: 'Interested in scalable workflow systems and clean backend architecture' },
+  { icon: '🐱', text: 'Cat enthusiast — CatStack Lab is inspired by my two cats' },
+  { icon: '📚', text: 'Actively learning system design, frontend architecture, and product engineering' },
+  { icon: '🛠️', text: 'Enjoy turning complex business processes into usable software systems' },
+  { icon: '🚀', text: 'Currently building modern frontend experiments with Next.js and Tailwind CSS' },
 ]
 
 function SkillBar({ name, level, color }: { name: string; level: number; color: string }) {
@@ -68,13 +88,13 @@ export default function AboutPage() {
               <div>
                 <h1 className="font-display" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#1c1917', marginBottom: '24px' }}>
                   Hey, I'm{' '}
-                  <span style={{ color: 'var(--orange)', fontStyle: 'italic' }}>Ibnu</span> 👋
+                  <span style={{ color: 'var(--orange)', fontStyle: 'italic' }}>Ibnu Nahwitama.</span> 👋
                 </h1>
                 <p style={{ fontSize: '1.1rem', lineHeight: 1.85, color: '#57534e', marginBottom: '24px' }}>
-                  I'm a fullstack developer from Indonesia with a passion for building things that actually work — and a slight obsession with cats 🐱.
+                  I'm a fullstack developer focused on building scalable web applications, workflow systems, and modern user interfaces with strong attention to performance, maintainability, and user experience.
                 </p>
                 <p style={{ fontSize: '1rem', lineHeight: 1.85, color: '#78716c', marginBottom: '32px' }}>
-                  I specialize in <strong style={{ color: 'var(--teal)' }}>ASP.NET Core</strong> backend systems and <strong style={{ color: 'var(--orange)' }}>Next.js</strong> frontends. I've shipped everything from payment gateways to enterprise workflow engines — always with clean code and a cat nearby.
+                  My core expertise is in <strong style={{ color: 'var(--teal)' }}>ASP.NET Core</strong>, <strong style={{ color: 'var(--orange)' }}>Next.js</strong>, REST API development, and database-driven applications. I enjoy building systems that solve operational problems while maintaining clean architecture and production-ready engineering standards.
                 </p>
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                   <Link href="/contact" style={{
@@ -98,10 +118,10 @@ export default function AboutPage() {
               {/* Stats card */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 {[
-                  { number: '4+', label: 'Years Experience', icon: '🗓️', color: 'var(--orange)' },
-                  { number: '50+', label: 'APIs Shipped', icon: '⚙️', color: 'var(--teal)' },
-                  { number: '30+', label: 'Web Projects', icon: '🌐', color: '#8b5cf6' },
-                  { number: '2', label: 'Cats (bosses)', icon: '🐱', color: '#f59e0b' },
+                  { number: '30+', label: 'Projects Delivered', icon: '🚀', color: 'var(--orange)' },
+                  { number: '50+', label: 'REST APIs Built', icon: '⚙️', color: 'var(--teal)' },
+                  { number: '4+', label: 'Years Experience', icon: '🧠', color: '#8b5cf6' },
+                  { number: '100%', label: 'Production Focused', icon: '🛡️', color: '#f59e0b' },
                 ].map(stat => (
                   <div key={stat.label} style={{
                     background: 'white', borderRadius: '20px', padding: '24px',
@@ -157,6 +177,169 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* ─── Engineering Focus ─── */}
+        <section
+          style={{
+            background: 'white',
+            padding: 'clamp(60px, 10vw, 100px) clamp(24px, 8vw, 120px)',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            style={{
+              maxWidth: '1200px',
+              margin: '0 auto',
+            }}
+          >
+            <div
+              className="section-label"
+              style={{ 
+                marginBottom: '24px' 
+              }}
+            >
+              ⚙️ Engineering Focus
+            </div>
+
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-end',
+                gap: '24px',
+                marginBottom: '56px',
+                flexWrap: 'wrap',
+              }}
+            >
+              <div style={{ maxWidth: '700px' }}>
+                <h2
+                  className="font-display"
+                  style={{
+                    fontSize: 'clamp(2rem, 4vw, 3rem)',
+                    fontWeight: 700,
+                    color: '#1c1917',
+                    lineHeight: 1.1,
+                    marginBottom: '16px',
+                  }}
+                >
+                  Building software beyond just interfaces
+                </h2>
+
+                <p
+                  style={{
+                    fontSize: '1rem',
+                    lineHeight: 1.85,
+                    color: '#78716c',
+                  }}
+                >
+                  I focus on creating scalable systems, maintainable architectures,
+                  and modern frontend experiences that solve real operational and
+                  business problems.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className="engineering-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '24px',
+              }}
+            >
+              {[
+                {
+                  icon: '⚙️',
+                  title: 'REST API Architecture',
+                  desc: 'Designing secure and scalable backend APIs with ASP.NET Core, authentication flows, validation layers, and structured business logic.',
+                  color: 'var(--orange)',
+                },
+                {
+                  icon: '🏢',
+                  title: 'Enterprise Workflow Systems',
+                  desc: 'Building approval flows, notification systems, document processes, and operational dashboards for enterprise environments.',
+                  color: 'var(--teal)',
+                },
+                {
+                  icon: '💻',
+                  title: 'Modern Frontend Engineering',
+                  desc: 'Creating responsive, accessible, and performant interfaces using Next.js, React, TypeScript, and Tailwind CSS.',
+                  color: '#8b5cf6',
+                },
+                {
+                  icon: '🗄️',
+                  title: 'Database Engineering',
+                  desc: 'Working with PostgreSQL and SQL Server for query optimization, relational modeling, and transactional business systems.',
+                  color: '#2563eb',
+                },
+                {
+                  icon: '🚀',
+                  title: 'Deployment & DevOps',
+                  desc: 'Deploying applications with Docker, CI/CD workflows, environment management, and production-ready configuration practices.',
+                  color: '#0891b2',
+                },
+                {
+                  icon: '🧠',
+                  title: 'System Thinking',
+                  desc: 'Focused on maintainability, reusable architecture, scalable component systems, and long-term engineering quality.',
+                  color: '#f59e0b',
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="card-lift"
+                  style={{
+                    background: 'var(--cream)',
+                    borderRadius: '24px',
+                    padding: '32px',
+                    border: '1.5px solid rgba(249,115,22,0.08)',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+                    transition: 'all 0.25s ease',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '56px',
+                      height: '56px',
+                      borderRadius: '16px',
+                      background: item.color,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1.5rem',
+                      marginBottom: '20px',
+                      boxShadow: '0 8px 20px rgba(0,0,0,0.08)',
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+
+                  <h3
+                    style={{
+                      fontSize: '1.1rem',
+                      fontWeight: 700,
+                      color: '#1c1917',
+                      marginBottom: '12px',
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    style={{
+                      fontSize: '0.95rem',
+                      lineHeight: 1.75,
+                      color: '#78716c',
+                    }}
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ─── Fun facts ─── */}
         <section style={{ background: 'var(--cream)', padding: 'clamp(60px, 10vw, 100px) clamp(24px, 8vw, 120px)' }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
@@ -189,10 +372,10 @@ export default function AboutPage() {
           <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative' }}>
             <div style={{ fontSize: '3rem', marginBottom: '16px', animation: 'float 3s ease-in-out infinite' }}>😺</div>
             <h2 className="font-display" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, color: 'white', marginBottom: '16px', lineHeight: 1.1 }}>
-              Let's build something paw-some!
+              Let's build modern software that scales!
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '36px' }}>
-              Whether you need a backend API, a full web app, or just want to talk about cats — I'm here for it.
+              I'm available for frontend, backend, and fullstack development projects focused on scalable architecture, modern UI systems, and production-ready applications.
             </p>
             <Link href="/contact" style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
@@ -221,6 +404,21 @@ export default function AboutPage() {
         @media (max-width: 480px) {
           .facts-grid { grid-template-columns: 1fr !important; }
         }
+        .engineering-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 900px) {
+          .engineering-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .engineering-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }          
       `}</style>
     </>
   )
