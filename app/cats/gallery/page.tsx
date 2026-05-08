@@ -20,8 +20,8 @@ const catImages = [
   },
   {
     src: '/cats/cat4.jpg',
-    title: 'Chika on duty',
-    description: 'Masseur Chika.',
+    title: 'Masseur Chika',
+    description: 'Chika on duty (massaging her fav person).',
   },
   {
     src: '/cats/cat5.jpg',

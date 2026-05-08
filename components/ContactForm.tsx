@@ -3,164 +3,287 @@
 import { useState } from 'react'
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' })
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [copied, setCopied] = useState<string | null>(null)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  const handleSubmit = async (e: React.MouseEvent) => {
-    e.preventDefault()
-    setStatus('sending')
-    // Replace with your Formspree endpoint or API route
+  const copyToClipboard = async (text: string, label: string) => {
     try {
-      await new Promise(res => setTimeout(res, 1200)) // simulate
-      setStatus('sent')
-    } catch {
-      setStatus('error')
+      await navigator.clipboard.writeText(text)
+      setCopied(label)
+
+      setTimeout(() => {
+        setCopied(null)
+      }, 2000)
+    } catch (err) {
+      console.error('Copy failed:', err)
     }
   }
 
-  return (
-    <section style={{ background: 'var(--color-black)', padding: 'clamp(80px, 12vw, 160px) clamp(24px, 8vw, 120px)' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(48px, 8vw, 120px)', alignItems: 'start' }} className="contact-grid">
+  const contactItems = [
+    {
+      label: 'Email',
+      value: 'nahwitama2000@gmail.com',
+      copyValue: 'nahwitama2000@gmail.com',
+      icon: '📧',
+    },
+    {
+      label: 'Location',
+      value: 'Bekasi, Indonesia',
+      copyValue: 'Bekasi, Indonesia',
+      icon: '📍',
+    },
+    {
+      label: 'LinkedIn',
+      value: 'linkedin.com/in/ibnu-nahwitama-a00bb3221',
+      copyValue: 'https://www.linkedin.com/in/ibnu-nahwitama-a00bb3221/',
+      icon: '💼',
+      href: 'https://www.linkedin.com/in/ibnu-nahwitama-a00bb3221/',
+    },
+    {
+      label: 'GitHub',
+      value: 'github.com/nahwitama10',
+      copyValue: 'https://github.com/nahwitama10',
+      icon: '🐱',
+      href: 'https://github.com/nahwitama10',
+    },
+  ]
 
-        {/* Left: copy */}
+  return (
+    <section
+      style={{
+        background: '#A77F60',
+        padding: 'clamp(80px, 12vw, 160px) clamp(24px, 8vw, 120px)',
+      }}
+    >
+      <div
+        className="contact-grid"
+        style={{
+          maxWidth: '1400px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 'clamp(48px, 8vw, 120px)',
+          alignItems: 'center',
+        }}
+      >
+        {/* Left Side */}
         <div>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: '24px' }}>
-            — Get In Touch
+          <p
+            style={{
+              fontSize: '0.72rem',
+              letterSpacing: '0.24em',
+              textTransform: 'uppercase',
+              color: '#ffc27c',
+              marginBottom: '24px',
+              fontWeight: 2100,
+            }}
+          >
+            — Contact
           </p>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.4rem, 5vw, 4.5rem)', fontWeight: 300, color: 'var(--color-white)', lineHeight: 1.08, letterSpacing: '-0.01em', marginBottom: '40px' }}>
-            Tell us about<br /><em style={{ fontStyle: 'italic' }}>your project.</em>
+
+          <h2
+            style={{
+              fontSize: 'clamp(2.8rem, 6vw, 5rem)',
+              fontWeight: 800,
+              color: 'white',
+              lineHeight: 1.05,
+              letterSpacing: '-0.04em',
+              marginBottom: '32px',
+            }}
+          >
+            Let&apos;s build
+            <br />
+            something great.
           </h2>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', lineHeight: 1.8, color: 'var(--color-warm-grey)', maxWidth: '380px', marginBottom: '48px' }}>
-            We'd love to hear about your project, however big or small. Get in touch and we'll arrange a time to discuss how we can help.
+
+          <p
+            style={{
+              fontSize: '1rem',
+              lineHeight: 1.9,
+              color: '#ffffff',
+              maxWidth: '520px',
+              marginBottom: '40px',
+            }}
+          >
+            Fullstack Developer specializing in ASP.NET, Next.js, and IT
+            Analysis. I enjoy building scalable systems, modern web
+            applications, API integrations, and enterprise solutions with clean
+            architecture and excellent user experience.
           </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+
+          {/* Tech Tags */}
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '12px',
+            }}
+          >
             {[
-              { label: 'Studio', value: 'London, United Kingdom' },
-              { label: 'Email', value: 'studio@minaleandmann.com' },
-              { label: 'Awards', value: 'London Design Awards 2018 Winner' },
-            ].map(item => (
-              <div key={item.label} style={{ display: 'flex', gap: '24px', alignItems: 'baseline' }}>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-mid-grey)', minWidth: '60px' }}>{item.label}</span>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.82rem', color: 'var(--color-warm-grey)' }}>{item.value}</span>
+              'ASP.NET Core',
+              'Next.js',
+              'TypeScript',
+              'SQL Server',
+              'REST API',
+              'System Integration',
+            ].map((tech) => (
+              <div
+                key={tech}
+                style={{
+                  padding: '10px 16px',
+                  borderRadius: '9999px',
+                  background: '#18181b',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  color: '#e7e5e4',
+                  fontSize: '0.85rem',
+                  fontWeight: 600,
+                }}
+              >
+                {tech}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Right: form */}
-        <div>
-          {status === 'sent' ? (
-            <div style={{ padding: '48px', border: '1px solid rgba(200,196,188,0.15)', textAlign: 'center' }}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', fontWeight: 300, color: 'var(--color-white)', marginBottom: '16px' }}>Thank you.</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.82rem', color: 'var(--color-warm-grey)' }}>We'll be in touch shortly.</p>
-            </div>
-          ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-              {[
-                { name: 'name', label: 'Full Name', type: 'text', required: true },
-                { name: 'email', label: 'Email Address', type: 'email', required: true },
-                { name: 'phone', label: 'Phone Number', type: 'tel', required: false },
-              ].map(field => (
-                <div key={field.name} style={{ borderBottom: '1px solid rgba(200,196,188,0.12)', paddingBottom: '4px', marginBottom: '28px' }}>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-body)', fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-mid-grey)', marginBottom: '8px' }}>
-                    {field.label}{field.required && ' *'}
-                  </label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    value={(form as any)[field.name]}
-                    onChange={handleChange}
-                    required={field.required}
-                    style={{
-                      width: '100%', background: 'transparent', border: 'none', outline: 'none',
-                      fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--color-white)',
-                      padding: '4px 0 10px', letterSpacing: '0.02em',
-                    }}
-                  />
-                </div>
-              ))}
+        {/* Right Side */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '20px',
+          }}
+        >
+          {contactItems.map((item) => (
+            <div
+              key={item.label}
+              onClick={() =>
+                copyToClipboard(item.copyValue, item.label)
+              }
+              style={{
+                background: 'rgba(255, 255, 255, 0.9)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '24px',
+                padding: '24px',
+                cursor: 'pointer',
+                transition: 'all 0.25s ease',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+              onMouseEnter={(e) => {
+                ;(e.currentTarget as HTMLElement).style.transform =
+                  'translateY(-4px)'
 
-              {/* Service select */}
-              <div style={{ borderBottom: '1px solid rgba(200,196,188,0.12)', paddingBottom: '4px', marginBottom: '28px' }}>
-                <label style={{ display: 'block', fontFamily: 'var(--font-body)', fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-mid-grey)', marginBottom: '8px' }}>
-                  Service *
-                </label>
-                <select
-                  name="service"
-                  value={form.service}
-                  onChange={handleChange}
+                ;(e.currentTarget as HTMLElement).style.border =
+                  '1px solid rgba(249,115,22,0.5)'
+              }}
+              onMouseLeave={(e) => {
+                ;(e.currentTarget as HTMLElement).style.transform =
+                  'none'
+
+                ;(e.currentTarget as HTMLElement).style.border =
+                  '1px solid rgba(255,255,255,0.08)'
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  gap: '20px',
+                }}
+              >
+                <div
                   style={{
-                    width: '100%', background: 'transparent', border: 'none', outline: 'none',
-                    fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: form.service ? 'var(--color-white)' : 'var(--color-mid-grey)',
-                    padding: '4px 0 10px', cursor: 'pointer', appearance: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '18px',
                   }}
                 >
-                  <option value="" disabled style={{ background: '#0a0a0a' }}>Select a service…</option>
-                  {['Architectural Design', 'Interior Design', 'Planning Applications', 'Conservation & Heritage', 'Create & Construct'].map(s => (
-                    <option key={s} value={s} style={{ background: '#0a0a0a' }}>{s}</option>
-                  ))}
-                </select>
-              </div>
+                  <div
+                    style={{
+                      width: '54px',
+                      height: '54px',
+                      borderRadius: '18px',
+                      background: 'rgba(249,115,22,0.12)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1.4rem',
+                    }}
+                  >
+                    {item.icon}
+                  </div>
 
-              {/* Message */}
-              <div style={{ borderBottom: '1px solid rgba(200,196,188,0.12)', paddingBottom: '4px', marginBottom: '40px' }}>
-                <label style={{ display: 'block', fontFamily: 'var(--font-body)', fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-mid-grey)', marginBottom: '8px' }}>
-                  Message *
-                </label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  rows={4}
-                  required
+                  <div>
+                    <p
+                      style={{
+                        fontSize: '0.72rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.18em',
+                        color: '#f97316',
+                        marginBottom: '8px',
+                      }}
+                    >
+                      {item.label}
+                    </p>
+
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                          color: 'black',
+                          textDecoration: 'none',
+                          fontSize: '1rem',
+                          fontWeight: 600,
+                          wordBreak: 'break-word',
+                        }}
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p
+                        style={{
+                          color: 'black',
+                          fontSize: '1rem',
+                          fontWeight: 600,
+                          wordBreak: 'break-word',
+                        }}
+                      >
+                        {item.value}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div
                   style={{
-                    width: '100%', background: 'transparent', border: 'none', outline: 'none', resize: 'none',
-                    fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--color-white)',
-                    padding: '4px 0 10px', letterSpacing: '0.02em', lineHeight: 1.7,
+                    color:
+                      copied === item.label
+                        ? '#22c55e'
+                        : '#a8a29e',
+                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    minWidth: '72px',
+                    textAlign: 'right',
                   }}
-                />
+                >
+                  {copied === item.label
+                    ? 'Copied ✓'
+                    : 'Copy'}
+                </div>
               </div>
-
-              {/* Privacy */}
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.68rem', color: 'var(--color-mid-grey)', marginBottom: '32px', lineHeight: 1.6 }}>
-                By submitting this form, you agree to our{' '}
-                <a href="/privacy-policy" style={{ color: 'var(--color-warm-grey)', borderBottom: '1px solid rgba(200,196,188,0.3)' }}>privacy policy</a>.
-              </p>
-
-              {/* Submit */}
-              <button
-                onClick={handleSubmit}
-                disabled={status === 'sending'}
-                style={{
-                  background: 'var(--color-white)',
-                  color: 'var(--color-black)',
-                  border: 'none',
-                  padding: '16px 48px',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.72rem',
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  cursor: 'pointer',
-                  transition: 'background 0.3s, color 0.3s',
-                  opacity: status === 'sending' ? 0.7 : 1,
-                }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'var(--color-off-white)' }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'var(--color-white)' }}
-              >
-                {status === 'sending' ? 'Sending…' : 'Send Message'}
-              </button>
             </div>
-          )}
+          ))}
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          .contact-grid { grid-template-columns: 1fr !important; }
+        @media (max-width: 900px) {
+          .contact-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </section>
