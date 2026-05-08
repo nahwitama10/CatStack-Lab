@@ -4,8 +4,8 @@ import ContactForm from '@/components/ContactForm'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact | Minale + Mann',
-  description: 'Get in touch with our London architecture and interior design studio.',
+  title: 'Contact | CatStack Lab 🐱',
+  description: 'Get in touch with Ibnu Nahwitama — fullstack developer based in Indonesia.',
 }
 
 export default function ContactPage() {

@@ -50,7 +50,7 @@ export default function ContactForm() {
   return (
     <section
       style={{
-        background: '#A77F60',
+        background: '#BFA28C',
         padding: 'clamp(80px, 12vw, 160px) clamp(24px, 8vw, 120px)',
       }}
     >
@@ -69,12 +69,12 @@ export default function ContactForm() {
         <div>
           <p
             style={{
-              fontSize: '0.72rem',
+              fontSize: '0.96rem',
               letterSpacing: '0.24em',
               textTransform: 'uppercase',
-              color: '#ffc27c',
+              color: '#ffcf97',
               marginBottom: '24px',
-              fontWeight: 2100,
+              fontWeight: 800,
             }}
           >
             — Contact
@@ -159,7 +159,7 @@ export default function ContactForm() {
                 copyToClipboard(item.copyValue, item.label)
               }
               style={{
-                background: 'rgba(255, 255, 255, 0.9)',
+                background: 'rgba(255, 235, 226, 0.87)',
                 border: '1px solid rgba(255,255,255,0.08)',
                 borderRadius: '24px',
                 padding: '24px',

@@ -17,7 +17,7 @@ const footerLinks = {
   ],
   Connect: [
     { label: 'GitHub', href: 'https://github.com/nahwitama10' },
-    { label: 'LinkedIn', href: 'YOUR_LINKEDIN_URL' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ibnu-nahwitama-a00bb3221/' },
     { label: 'Email', href: '/contact' },
   ],
 }

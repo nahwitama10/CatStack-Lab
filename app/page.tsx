@@ -45,7 +45,7 @@ const skills = [
 ]
 
 const funFacts = [
-  { icon: '🇮🇩', text: 'Based in Indonesia, collaborating with global technologies and modern web stacks' },
+  { icon: '/idn-flag.png', text: 'Based in Indonesia, collaborating with global technologies and modern web stacks' },
   { icon: '⚡', text: 'Interested in scalable workflow systems and clean backend architecture' },
   { icon: '🐱', text: 'Cat enthusiast — CatStack Lab is inspired by my two cats' },
   { icon: '📚', text: 'Actively learning system design, frontend architecture, and product engineering' },
@@ -299,7 +299,23 @@ export default function AboutPage() {
                 boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
                 textAlign: 'left', cursor: 'default',
               }}>
-                <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{fact.icon}</div>
+              <div style={{ marginBottom: '12px' }}>
+                {fact.icon.startsWith('/') ? (
+                  <img
+                    src={fact.icon}
+                    alt="Flag"
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      objectFit: 'contain',
+                    }}
+                  />
+                ) : (
+                  <div style={{ fontSize: '2rem' }}>
+                    {fact.icon}
+                  </div>
+                )}
+              </div>
                 <p style={{ fontSize: '0.95rem', fontWeight: 500, color: '#44403c', lineHeight: 1.5 }}>{fact.text}</p>
               </div>
             ))}

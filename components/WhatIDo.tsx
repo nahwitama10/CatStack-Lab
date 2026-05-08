@@ -222,21 +222,29 @@ export default function WhatIDo() {
                 {/* Tech pills */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                   {skill.techs.map(tech => (
-                    <span key={tech} style={{
+                    <span key={tech} 
+                    style={{
                       padding: '3px 10px',
                       background: 'rgba(255,255,255,0.8)',
-                      border: '1.5px solid rgba(0,0,0,0.08)',
+
+                      borderWidth: '1.5px',
+                      borderStyle: 'solid',
+                      borderColor: 'rgba(0,0,0,0.08)',
+
                       borderRadius: '9999px',
                       fontSize: '0.7rem',
                       fontWeight: 600,
                       color: '#57534e',
                       backdropFilter: 'blur(8px)',
                       transition: 'all 0.2s',
-                      ...(hovered === i ? {
-                        background: skill.accentBg,
-                        borderColor: skill.accentBorder,
-                        color: skill.accentColor,
-                      } : {}),
+
+                      ...(hovered === i
+                        ? {
+                            background: skill.accentBg,
+                            borderColor: skill.accentBorder,
+                            color: skill.accentColor,
+                          }
+                        : {}),
                     }}>
                       {tech}
                     </span>
