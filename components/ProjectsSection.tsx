@@ -4,7 +4,6 @@ import { useState, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 
 const projects = [
   { id: 1, title: 'Workflow Engine Pro', desc: 'Enterprise BPM system with visual workflow designer, approval chains, and real-time notifications via SignalR. Handles complex multi-step approval processes for enterprise clients.', type: 'backend', techs: ['ASP.NET Core', 'SignalR', 'PostgreSQL', 'React', 'Redis'], emoji: '⚙️', gradient: 'linear-gradient(135deg, #0d9488, #0f766e)', accentColor: '#0d9488', accentBg: 'rgba(13,148,136,0.08)', accentBorder: 'rgba(13,148,136,0.2)', featured: true, year: '2024', status: 'Production' },

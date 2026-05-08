@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
-import { useSearchParams } from 'next/navigation'
+//import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -25,9 +25,15 @@ const FILTERS = [
   { label: 'Integrations 🔗', value: 'integration' },
 ]
 
-export default function ProjectsPage() {
-  const searchParams = useSearchParams()
-  const typeParam = searchParams.get('type') || 'all'
+interface Props {
+  typeParam: string
+}
+
+export default function ProjectsPageClient({
+  typeParam,
+}: Props) {
+  // const searchParams = useSearchParams()
+  // const typeParam = searchParams.get('type') || 'all'
 
   const [filter, setFilter] = useState(typeParam)
   const [hovered, setHovered] = useState<number | null>(null)
