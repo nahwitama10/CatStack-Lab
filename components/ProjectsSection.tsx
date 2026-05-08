@@ -11,8 +11,10 @@ const projects = [
     type: 'backend',
     techs: ['ASP.NET Core', 'SignalR', 'PostgreSQL', 'React'],
     emoji: '⚙️',
-    color: 'from-cat-teal to-teal-700',
-    accent: 'bg-cat-teal/10 text-cat-teal border-cat-teal/20',
+    gradient: 'linear-gradient(135deg, #0d9488, #0f766e)',
+    accentColor: '#0d9488',
+    accentBg: 'rgba(13,148,136,0.08)',
+    accentBorder: 'rgba(13,148,136,0.2)',
     featured: true,
     year: '2024',
     href: '/projects?type=backend',
@@ -24,8 +26,10 @@ const projects = [
     type: 'web',
     techs: ['Next.js', 'Tailwind', 'TypeScript', 'Vercel'],
     emoji: '🐱',
-    color: 'from-cat-orange to-orange-600',
-    accent: 'bg-cat-orange/10 text-cat-orange border-cat-orange/20',
+    gradient: 'linear-gradient(135deg, #f97316, #ea580c)',
+    accentColor: '#f97316',
+    accentBg: 'rgba(249,115,22,0.08)',
+    accentBorder: 'rgba(249,115,22,0.2)',
     featured: true,
     year: '2025',
     href: '/projects?type=web',
@@ -37,8 +41,10 @@ const projects = [
     type: 'integration',
     techs: ['ASP.NET Core', 'Midtrans', 'PostgreSQL', 'Redis'],
     emoji: '💳',
-    color: 'from-purple-500 to-purple-700',
-    accent: 'bg-purple-50 text-purple-600 border-purple-200',
+    gradient: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
+    accentColor: '#8b5cf6',
+    accentBg: 'rgba(139,92,246,0.08)',
+    accentBorder: 'rgba(139,92,246,0.2)',
     featured: false,
     year: '2024',
     href: '/projects?type=integration',
@@ -50,8 +56,10 @@ const projects = [
     type: 'web',
     techs: ['Next.js', 'ASP.NET Core', 'PostgreSQL', 'Docker'],
     emoji: '🛒',
-    color: 'from-amber-500 to-orange-600',
-    accent: 'bg-amber-50 text-amber-600 border-amber-200',
+    gradient: 'linear-gradient(135deg, #f59e0b, #d97706)',
+    accentColor: '#d97706',
+    accentBg: 'rgba(245,158,11,0.08)',
+    accentBorder: 'rgba(245,158,11,0.2)',
     featured: false,
     year: '2023',
     href: '/projects?type=web',
@@ -63,8 +71,10 @@ const projects = [
     type: 'integration',
     techs: ['ASP.NET Core', 'WhatsApp API', 'RabbitMQ'],
     emoji: '💬',
-    color: 'from-green-500 to-teal-600',
-    accent: 'bg-green-50 text-green-600 border-green-200',
+    gradient: 'linear-gradient(135deg, #22c55e, #16a34a)',
+    accentColor: '#16a34a',
+    accentBg: 'rgba(34,197,94,0.08)',
+    accentBorder: 'rgba(34,197,94,0.2)',
     featured: false,
     year: '2023',
     href: '/projects?type=integration',
@@ -76,8 +86,10 @@ const projects = [
     type: 'backend',
     techs: ['ASP.NET Core', 'C#', 'SQL Server', 'Angular'],
     emoji: '👥',
-    color: 'from-blue-500 to-indigo-600',
-    accent: 'bg-blue-50 text-blue-600 border-blue-200',
+    gradient: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+    accentColor: '#2563eb',
+    accentBg: 'rgba(59,130,246,0.08)',
+    accentBorder: 'rgba(59,130,246,0.2)',
     featured: false,
     year: '2023',
     href: '/projects?type=backend',
@@ -98,82 +110,219 @@ export default function ProjectsSection() {
   const filtered = filter === 'all' ? projects : projects.filter(p => p.type === filter)
 
   return (
-    <section className="py-24 bg-cat-cream relative overflow-hidden" style={{ fontFamily: 'var(--font-body)' }}>
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ backgroundImage: 'radial-gradient(circle, rgba(249,115,22,0.06) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+    <section style={{
+      background: 'linear-gradient(180deg, #fff8f0 0%, #fffbf5 100%)',
+      padding: 'clamp(80px, 12vw, 140px) clamp(24px, 8vw, 120px)',
+      position: 'relative',
+      overflow: 'hidden',
+      fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+    }}>
+      {/* Dot grid */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.5,
+        backgroundImage: 'radial-gradient(circle, rgba(249,115,22,0.07) 1px, transparent 1px)',
+        backgroundSize: '36px 36px',
+      }} />
 
-      <div className="max-w-7xl mx-auto px-6 relative">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
+
+        {/* ─── Header ─── */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px', flexWrap: 'wrap', gap: '20px' }}>
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-cat-orange/10 border border-cat-orange/20 rounded-full mb-4">
-              <span className="text-cat-orange text-sm font-bold">🛠️ Projects</span>
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              padding: '6px 16px',
+              background: 'rgba(249,115,22,0.08)',
+              border: '1.5px solid rgba(249,115,22,0.2)',
+              borderRadius: '9999px',
+              marginBottom: '16px',
+            }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#f97316' }}>🛠️ Projects</span>
             </div>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-cat-dark">
-              Things I've <span className="text-cat-orange italic">built</span>
+            <h2 style={{
+              fontFamily: "'Fraunces', Georgia, serif",
+              fontSize: 'clamp(2.2rem, 5vw, 3.8rem)',
+              fontWeight: 700,
+              color: '#1c1917',
+              lineHeight: 1.08,
+              letterSpacing: '-0.03em',
+            }}>
+              Things I've{' '}
+              <span style={{
+                background: 'linear-gradient(135deg, #f97316, #ea580c)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontStyle: 'italic',
+              }}>
+                built
+              </span>
             </h2>
           </div>
-          <Link href="/projects"
-            className="inline-flex items-center gap-2 text-cat-orange font-bold hover:gap-3 transition-all duration-200 text-sm"
+          <Link href="/projects" style={{
+            display: 'inline-flex', alignItems: 'center', gap: '6px',
+            fontSize: '0.875rem', fontWeight: 700, color: '#f97316',
+            textDecoration: 'none', transition: 'gap 0.2s',
+          }}
+            onMouseEnter={e => (e.currentTarget as HTMLElement).style.gap = '10px'}
+            onMouseLeave={e => (e.currentTarget as HTMLElement).style.gap = '6px'}
           >
             All Projects →
           </Link>
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        {/* ─── Filters ─── */}
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '36px' }}>
           {FILTERS.map(f => (
             <button key={f.value} onClick={() => setFilter(f.value)}
-              className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-200 border ${
-                filter === f.value
-                  ? 'bg-cat-orange text-white border-cat-orange shadow-cat'
-                  : 'bg-white text-cat-grey border-cat-light-grey hover:border-cat-orange/40 hover:text-cat-orange'
-              }`}
+              style={{
+                padding: '8px 18px',
+                borderRadius: '9999px',
+                fontSize: '0.825rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                border: '1.5px solid',
+                ...(filter === f.value ? {
+                  background: 'linear-gradient(135deg, #f97316, #ea580c)',
+                  color: 'white',
+                  borderColor: 'transparent',
+                  boxShadow: '0 4px 16px rgba(249,115,22,0.35)',
+                } : {
+                  background: 'rgba(255,255,255,0.8)',
+                  backdropFilter: 'blur(8px)',
+                  color: '#78716c',
+                  borderColor: 'rgba(0,0,0,0.08)',
+                }),
+              }}
             >
               {f.label}
             </button>
           ))}
+          <span style={{
+            marginLeft: 'auto', display: 'flex', alignItems: 'center',
+            fontSize: '0.8rem', color: '#a8a29e', fontWeight: 600,
+          }}>
+            {filtered.length} project{filtered.length !== 1 ? 's' : ''}
+          </span>
         </div>
 
-        {/* Project grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((project) => (
-            <Link key={project.id} href={project.href}
+        {/* ─── Cards ─── */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '20px',
+        }} className="projects-grid">
+          {filtered.map(project => (
+            <Link
+              key={project.id}
+              href={project.href}
               onMouseEnter={() => setHovered(project.id)}
               onMouseLeave={() => setHovered(null)}
-              className={`group relative bg-white rounded-cat-lg border-2 border-cat-light-grey overflow-hidden card-lift flex flex-col ${
-                project.featured ? 'md:col-span-1' : ''
-              }`}
+              style={{
+                display: 'flex', flexDirection: 'column',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                textDecoration: 'none',
+                position: 'relative',
+                // Glassmorphism
+                background: hovered === project.id
+                  ? 'rgba(255,255,255,0.97)'
+                  : 'rgba(255,255,255,0.72)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: `1.5px solid`,
+                borderColor: hovered === project.id
+                  ? project.accentColor + '50'
+                  : 'rgba(0,0,0,0.07)',
+                boxShadow: hovered === project.id
+                  ? `0 24px 64px rgba(0,0,0,0.1), 0 0 0 0px ${project.accentColor}`
+                  : '0 2px 16px rgba(0,0,0,0.05)',
+                transform: hovered === project.id ? 'translateY(-8px)' : 'none',
+                transition: 'all 0.35s cubic-bezier(0.34,1.56,0.64,1)',
+              }}
             >
-              {/* Top color bar */}
-              <div className={`h-2 w-full bg-gradient-to-r ${project.color}`} />
+              {/* Gradient top bar */}
+              <div style={{
+                height: hovered === project.id ? '5px' : '3px',
+                background: project.gradient,
+                transition: 'height 0.3s ease',
+                flexShrink: 0,
+              }} />
 
-              <div className="p-6 flex flex-col flex-1">
+              <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 {/* Top row */}
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-3xl">{project.emoji}</span>
-                  <div className="flex items-center gap-2">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '14px' }}>
+                  <span style={{
+                    fontSize: '2rem',
+                    display: 'inline-block',
+                    transition: 'transform 0.3s cubic-bezier(0.34,1.56,0.64,1)',
+                    transform: hovered === project.id ? 'scale(1.2) rotate(8deg)' : 'none',
+                  }}>{project.emoji}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     {project.featured && (
-                      <span className="tag-pill bg-cat-yellow/30 text-amber-700 border-cat-yellow/40">⭐ Featured</span>
+                      <span style={{
+                        padding: '2px 8px',
+                        background: 'rgba(252,211,77,0.25)',
+                        border: '1.5px solid rgba(252,211,77,0.5)',
+                        borderRadius: '9999px',
+                        fontSize: '0.65rem', fontWeight: 700, color: '#92400e',
+                      }}>⭐ Featured</span>
                     )}
-                    <span className="text-xs text-cat-mid-grey font-medium">{project.year}</span>
+                    <span style={{ fontSize: '0.72rem', color: '#a8a29e', fontWeight: 500 }}>{project.year}</span>
                   </div>
                 </div>
 
-                <h3 className="font-display text-xl font-bold text-cat-dark mb-2 group-hover:text-cat-orange transition-colors">
+                {/* Title */}
+                <h3 style={{
+                  fontFamily: "'Fraunces', Georgia, serif",
+                  fontSize: '1.15rem',
+                  fontWeight: 700,
+                  color: hovered === project.id ? project.accentColor : '#1c1917',
+                  marginBottom: '8px',
+                  letterSpacing: '-0.02em',
+                  transition: 'color 0.2s',
+                }}>
                   {project.title}
                 </h3>
-                <p className="text-cat-grey text-sm leading-relaxed flex-1 mb-4">{project.desc}</p>
 
-                {/* Tech tags */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
+                {/* Desc */}
+                <p style={{
+                  fontSize: '0.85rem',
+                  lineHeight: 1.7,
+                  color: '#78716c',
+                  flex: 1,
+                  marginBottom: '16px',
+                }}>
+                  {project.desc}
+                </p>
+
+                {/* Tech pills */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '14px' }}>
                   {project.techs.map(tech => (
-                    <span key={tech} className={`tag-pill border ${project.accent}`}>{tech}</span>
+                    <span key={tech} style={{
+                      padding: '2px 8px',
+                      background: hovered === project.id ? project.accentBg : 'rgba(0,0,0,0.04)',
+                      border: `1.5px solid ${hovered === project.id ? project.accentBorder : 'rgba(0,0,0,0.07)'}`,
+                      borderRadius: '9999px',
+                      fontSize: '0.68rem', fontWeight: 600,
+                      color: hovered === project.id ? project.accentColor : '#78716c',
+                      transition: 'all 0.2s',
+                    }}>
+                      {tech}
+                    </span>
                   ))}
                 </div>
 
-                {/* Arrow */}
-                <div className="flex items-center gap-1 text-cat-orange font-bold text-sm opacity-0 group-hover:opacity-100 transition-all duration-200 -translate-x-2 group-hover:translate-x-0">
+                {/* CTA row */}
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: '6px',
+                  fontSize: '0.78rem', fontWeight: 700,
+                  color: project.accentColor,
+                  opacity: hovered === project.id ? 1 : 0,
+                  transform: hovered === project.id ? 'translateX(0)' : 'translateX(-6px)',
+                  transition: 'all 0.25s ease',
+                }}>
                   View Project →
                 </div>
               </div>
@@ -182,12 +331,21 @@ export default function ProjectsSection() {
         </div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-20">
-            <div className="text-6xl mb-4">😿</div>
-            <p className="font-display text-2xl text-cat-grey">No projects here yet...</p>
+          <div style={{ textAlign: 'center', padding: '80px 0' }}>
+            <div style={{ fontSize: '4rem', marginBottom: '16px' }}>😿</div>
+            <p style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: '1.5rem', color: '#78716c' }}>No projects here yet...</p>
           </div>
         )}
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .projects-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 560px) {
+          .projects-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }
