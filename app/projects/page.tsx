@@ -12,8 +12,7 @@ export default async function Page({
   const params = await searchParams
 
   return (
-    <ProjectsPageClient
-      typeParam={params.type || 'all'}
+    <ProjectsPageClient typeParam={params.type || 'all'}
     />
   )
 }

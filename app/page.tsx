@@ -117,7 +117,7 @@ export default function AboutPage() {
         </div>
       </section>
       <WhatIDo />
-      <ProjectsSection />          
+      <ProjectsSection typeParam="all" />      
       {/* ─── Engineering Focus ─── */}
       <section
         style={{
