@@ -10,9 +10,9 @@ const footerLinks = {
     { label: 'Contact', href: '/contact' },
   ],
   Engineering: [
-    { label: 'Frontend Systems', href: '/projects?type=frontend' },
+    { label: 'Frontend Systems', href: '/projects?type=web' },
     { label: 'Backend APIs', href: '/projects?type=backend' },
-    { label: 'Workflow Platforms', href: '/projects?type=enterprise' },
+    { label: 'Workflow Platforms', href: '/projects?type=backend' },
     { label: 'Integrations', href: '/projects?type=integration' },
   ],
   Connect: [
@@ -26,7 +26,7 @@ const techStack = ['ASP.NET Core', 'Next.js', 'TypeScript', 'PostgreSQL', 'Tailw
 
 const socials = [
   { icon: '⌨️', href: 'https://github.com/nahwitama10', label: 'GitHub' },
-  { icon: '💼', href: '#', label: 'LinkedIn' },
+  { icon: '💼', href: 'https://www.linkedin.com/in/ibnu-nahwitama-a00bb3221/', label: 'LinkedIn' },
   { icon: '📬', href: '/contact', label: 'Email' },
 ]
 

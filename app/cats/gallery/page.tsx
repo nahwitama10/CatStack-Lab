@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+//export const metadata = { title: 'Cat Gallery | CatStack Lab 🐱' }
 
 // Curated gallery with different sizes for masonry feel
 const GALLERY = [
