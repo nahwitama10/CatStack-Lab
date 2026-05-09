@@ -83,7 +83,7 @@ export default function Navbar() {
                 {/* Dropdown */}
                 {link.children && activeDropdown === link.label && (
                   <div style={{
-                    position: 'absolute', top: 'calc(100% + 8px)', left: '50%', transform: 'translateX(-50%)',
+                    position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)',
                     background: 'white', borderRadius: '16px', padding: '8px',
                     boxShadow: '0 16px 48px rgba(0,0,0,0.12)', border: '1px solid rgba(249,115,22,0.1)',
                     minWidth: '180px', animation: 'fadeInDown 0.15s ease forwards', zIndex: 60,
